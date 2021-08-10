@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Request Payment </title>
+    </h:head>
+    <h:body>
+                Money: <h:outputText id="UsersMoney" title="UserMoney" value=" #{UserMoneyBean.userCurrencySymbol} #{UserMoneyBean.currentUserMoney}"/>
+        <h:form id="request_payment_form" title="Make Payment Form" >
+            Username: <h:inputText id="receivers_username" label="Receivers Username" maxlength="20" required="true" requiredMessage="Please enter who your requesting from" title="username" value="#{UserMoneyBean.recieverName}"/>
+            <br/>
+            Money to be send  #{UserMoneyBean.userCurrencySymbol} <h:inputText id="money_to_send" label="Money To Send" maxlength="20" required="true" requiredMessage="Please enter the amount money to be recieved" title="money" value="#{UserMoneyBean.money}">
+                <f:convertNumber type="number" pattern="#,###.##" />
+            </h:inputText>
+            <br/>
+            <h:commandButton id="submit_form" title="Submit Payment" label="Submit Form" type="submit" value="Submit Form" action="#{UserMoneyBean.submitPayment()}" />
+            <h:commandButton id="reset_form" title="Reset Form" label="Reset Form" type="reset" value="Reset Form" />
+        </h:form>
+                
+        <h:link value="Back to main menu" outcome="user"/>
+    </h:body>
+</html>

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>ALL USERS </title>
+    </h:head>
+    <h:body>
+        <h:dataTable value="#{AdminMoneyBean.allUsers}" var="user">
+            <h:column>    				
+                <f:facet name="header">ID   </f:facet>    				
+                    #{user.id}
+            </h:column>
+            <h:column>    				
+                <f:facet name="header">Username   </f:facet>    				
+                    #{user.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Balance   </f:facet>
+                    #{AdminMoneyBean.userCurrencySymbol}  #{AdminMoneyBean.showCorrectCurrencyFromDB(user.money)}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Currency Used By User </f:facet>
+                    #{AdminMoneyBean.getSymbolFromCurrency(user.currency)} 
+            </h:column>
+            <h:column>
+                <f:facet name="header">Forename  </f:facet>
+                    #{user.name} 
+            </h:column>
+            <h:column>
+                <f:facet name="header">Surname  </f:facet>
+                    #{user.surname} 
+            </h:column>
+            <h:column>
+                <f:facet name="header">Password Stored  </f:facet>
+                    #{user.userpassword} 
+            </h:column>
+        </h:dataTable>
+
+        <h:link value="Back to main menu" outcome="admin"/>
+        <br/>
+
+    </h:body>
+</html>
